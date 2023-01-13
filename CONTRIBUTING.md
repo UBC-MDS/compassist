@@ -76,4 +76,4 @@ Code of Conduct. By contributing to this project you agree to abide by its terms
 
 ## Attribution
 
-These contribution guidelines were adapted from the [cookiecutter contribution guidelines](https://github.com/cookiecutter/cookiecutter/blob/main/CONTRIBUTING.md).
+These contribution guidelines were adapted from the [Cookiecutter Repository contribution file](https://github.com/cookiecutter/cookiecutter/blob/main/CONTRIBUTING.md).
