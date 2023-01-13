@@ -43,7 +43,7 @@ If you are proposing a feature:
 
 Ready to contribute? Here's how to set up `compassist` for local development.
 
-1. Fork the [compassist](https://github.com/UBC-MDS/compassist) repo on GitHub
+1. Fork the [compassist](https://github.com/UBC-MDS/compassist) repo on GitHub.
 2. Clone your fork to download a copy of `compassist` locally.
 3. Install `compassist` using `poetry`:
 
@@ -73,3 +73,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Please note that the `compassist` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.
+
+## Attribution
+
+These contribution guidelines were adapted from the [cookiecutter contribution guidelines](https://github.com/cookiecutter/cookiecutter/blob/main/CONTRIBUTING.md).
