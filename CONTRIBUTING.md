@@ -1,13 +1,12 @@
 # Contributing
 
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
+Contributions to the [Compassist Repository](https://github.com/UBC-MDS/compassist) are welcome, and any feedback, input, or bug reports are greatly appreciated! Every little bit helps, and credit will always be given. 
 
 ## Types of Contributions
 
 ### Report Bugs
 
-If you are reporting a bug, please include:
+If you are reporting a bug, please open an issue and include:
 
 * Your operating system name and version.
 * Any details about your local setup that might be helpful in troubleshooting.
@@ -16,7 +15,7 @@ If you are reporting a bug, please include:
 ### Fix Bugs
 
 Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
-wanted" is open to whoever wants to implement it.
+wanted" is open to whoever wants to implement it. 
 
 ### Implement Features
 
@@ -30,6 +29,8 @@ part of the documentation, such as the official docs, docstrings, or even
 on the web in blog posts, articles, and such.
 
 ### Submit Feedback
+
+We are open to ideas and recommendations of new computational tools that help in video game completionist tasks.
 
 If you are proposing a feature:
 
