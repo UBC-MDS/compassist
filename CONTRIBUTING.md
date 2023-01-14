@@ -1,13 +1,12 @@
 # Contributing
 
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
+Contributions to the [Compassist Repository](https://github.com/UBC-MDS/compassist) are welcome, and any feedback, input, or bug reports are greatly appreciated! Every little bit helps, and credit will always be given. 
 
 ## Types of Contributions
 
 ### Report Bugs
 
-If you are reporting a bug, please include:
+If you are reporting a bug, please open an issue and include:
 
 * Your operating system name and version.
 * Any details about your local setup that might be helpful in troubleshooting.
@@ -16,7 +15,7 @@ If you are reporting a bug, please include:
 ### Fix Bugs
 
 Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
-wanted" is open to whoever wants to implement it.
+wanted" is open to whoever wants to implement it. 
 
 ### Implement Features
 
@@ -31,6 +30,8 @@ on the web in blog posts, articles, and such.
 
 ### Submit Feedback
 
+We are open to ideas and recommendations of new computational tools that help in video game completionist tasks.
+
 If you are proposing a feature:
 
 * Explain in detail how it would work.
@@ -42,22 +43,23 @@ If you are proposing a feature:
 
 Ready to contribute? Here's how to set up `compassist` for local development.
 
-1. Download a copy of `compassist` locally.
-2. Install `compassist` using `poetry`:
+1. Fork the [compassist](https://github.com/UBC-MDS/compassist) repo on GitHub.
+2. Clone your fork to download a copy of `compassist` locally.
+3. Install `compassist` using `poetry`:
 
     ```console
     $ poetry install
     ```
 
-3. Use `git` (or similar) to create a branch for local development and make your changes:
+4. Use `git` (or similar) to create a branch for local development and make your changes:
 
     ```console
-    $ git checkout -b name-of-your-bugfix-or-feature
+    $ git switch -c name-of-your-bugfix-or-feature
     ```
 
-4. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
-5. Commit your changes and open a pull request.
+6. Commit your changes and open a pull request.
 
 ## Pull Request Guidelines
 
@@ -71,3 +73,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Please note that the `compassist` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.
+
+## Attribution
+
+These contribution guidelines were adapted from the [Cookiecutter Repository contribution file](https://github.com/cookiecutter/cookiecutter/blob/main/CONTRIBUTING.md).

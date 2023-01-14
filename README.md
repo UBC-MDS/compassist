@@ -34,7 +34,7 @@ $ pip install compassist
 
 ## Contributing
 
-Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+If you are interested in contributing to `compassist`, read the [contributing guidelines](https://github.com/UBC-MDS/compassist/blob/main/CONTRIBUTING.md). Please note that this project is released with a [Code of Conduct](https://github.com/UBC-MDS/compassist/blob/main/CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## License
 
