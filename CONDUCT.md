@@ -2,6 +2,8 @@
 
 ## Team 19 DSCI-524 Group Project - compassist
 
+This project is created by students of Group 19 - Block 4 from the Master of Data Science program to fulfill the requirements of the course DSCI524. The project will adhere to the code of conduct proposed by The University of British Columbia.
+
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
