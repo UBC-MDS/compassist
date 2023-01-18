@@ -49,21 +49,40 @@ def boss_completion(probs, run_time=0):
     print('boss_completion works!!')
 
 def dry_calc(prob, avg_time=0):
-    """Calculates probability of at least one occurence of an event given number of attempts
-
+     """Calculates probability of at least one occurence of an event given the number of attempts.
+    
     Parameters
     ----------
-    prob : float
-        probability of occurence
-    avg_time : int
-        time (in seconds) per attempt on average
+    p : float
+        Probability of event occurence.
+        
+    n : int
+        The number of attempts.
+        
+    verbose : bool, Optional
+        Controls format of returned probability. Default (True) returns result as a statement, False returns a float.
+        
+    plot : bool, Optional
+        Controls return of plot showing where the resulting probability lies on the binomial distribution. Default is True.
     
     Returns
-    -------
-    time : int
-        average time taken for occurence
-    attempts : int
-        expected number of attempts required
+    -------     
+    str 
+        String containing the probability of at least one occurrence of event given the number of trials as a percentage (default).
+
+    float
+        Probability of at least one occurrence of event given the number of trials as a decimal (if verbose set to False).
+        
+    matplotlib.container.BarContainer
+        Bar plot showing where the resulting probability lies on the probability distribution.
+        
+    Examples
+    --------
+    >>> dry_calc(0.2, 5, verbose=False, plot=False)
+    0.6723199999999999
+    
+    >>> dry_calc(0.2, 5, verbose=True, plot=False)
+    'There is a 67.2% chance of the event occurring at least once after you play 5 attempts.'
     """
 
     # dummy output just for testing functions
