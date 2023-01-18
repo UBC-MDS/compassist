@@ -48,26 +48,95 @@ def boss_completion(probs, run_time=0):
     # dummy outpu just for testing functions
     print('boss_completion works!!')
 
-def dry_calc(prob, avg_time=0):
-    """Calculates probability of at least one occurence of an event given number of attempts
+# dry_calc imports
+import math 
+import matplotlib.pyplot as plt
 
+# dry_calc function
+def dry_calc(p, n, verbose=True, plot=True):
+    """Calculates probability of at least one occurence of an event given the number of attempts.
+    
     Parameters
     ----------
-    prob : float
-        probability of occurence
-    avg_time : int
-        time (in seconds) per attempt on average
+    p : float
+        Probability of event occurence.
+        
+    n : int
+        The number of attempts.
+        
+    verbose : bool, Optional
+        Controls format of returned probability. Default (True) returns result as a statement, False returns a float.
+        
+    plot : bool, Optional
+        Controls return of plot showing where the resulting probability lies on the binomial distribution. Default is True.
     
     Returns
     -------
-    time : int
-        average time taken for occurence
-    attempts : int
-        expected number of attempts required
-    """
+    str 
+        String containing the probability of at least one occurrence of event given the number of trials as a percentage (default).
 
-    # dummy output just for testing functions
-    print('dry_calc works!!')
+    float
+        Probability of at least one occurrence of event given the number of trials as a decimal (if verbose set to False).
+        
+        
+    matplotlib.container.BarContainer
+        Bar plot showing where the resulting probability lies on the probability distribution.
+        
+    Examples
+    --------
+    >>> dry_calc(0.2, 5, verbose=False, plot=False)
+    0.6723199999999999
+    
+    >>> dry_calc(0.2, 5, verbose=True, plot=False)
+    'There is a 67.2% chance of the event occurring at least once after you play 5 attempts.'
+    """
+    # check probability input is a float between 0 and 1
+    if not (0 <= p <= 1):
+        raise ValueError("Probability, p, should be a decimal between 0 and 1!")
+        
+    # check n input is a positive integer       
+    if not isinstance(n, int) or not (n >= 0):
+        raise ValueError("Number of attempts, n, should be an integer greater than or equal to 0!")
+    
+    # calculate p(0): binomial probability of the event occurring 0 times given n trials and probability p
+    x = 0
+    n_choose_x = math.factorial(n) / (math.factorial(x) * math.factorial((n - x)))
+    p0 = n_choose_x * (p ** x) * ((1 - p) ** (n - x))
+    
+    # calculate probability of at least 1 occurrence: 1 - p(0)
+    p1 = 1 - p0
+    p1_percent = p1 * 100
+    
+    # show plot if requested
+    if plot:
+        pn = 0
+        pp = dry_calc(p, pn, verbose=False, plot=False)
+        
+        # initiate x and y lists
+        px = [pn]
+        py = [pp]
+    
+        while pp <= 0.99:
+            pn += 1
+            pp = dry_calc(p, pn, verbose=False, plot=False)
+            px.append(pn)
+            py.append(pp)
+    
+        plt.bar(px, py)
+        plt.plot(n, p1, marker="X", ms=15, mfc="red", label=round(p1, 3))
+        plt.xlabel("Number of attempts")
+        plt.ylabel("Probability")
+        plt.legend()
+        plt.show()
+    
+    # check verbose argument to return correct output
+    if verbose:
+        result = f"There is a {p1_percent:.1f}% chance of the event occurring at least once after you play 5 attempts."
+        return result
+    
+    else:
+        return p1    
+
 
 def pts_calc(points_attempt, time_attempt):
     """Calculates the time required to achieve certain number of points in the most efficient manner
