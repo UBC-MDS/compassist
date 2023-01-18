@@ -48,8 +48,13 @@ def boss_completion(probs, run_time=0):
     # dummy outpu just for testing functions
     print('boss_completion works!!')
 
+# dry_calc imports
+import math 
+import matplotlib.pyplot as plt
+
+# dry_calc function
 def dry_calc(p, n, verbose=True, plot=True):
-     """Calculates probability of at least one occurence of an event given the number of attempts.
+    """Calculates probability of at least one occurence of an event given the number of attempts.
     
     Parameters
     ----------
