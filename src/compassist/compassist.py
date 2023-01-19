@@ -1,32 +1,134 @@
-def shiny_hunt(pokemon, game, gen, attempt_time=0):
-    """Calculates optimal time, best method and location for shiny hunting any pokemon
+# shiny_hunt imports
+import numpy as np
+
+def shiny_hunt(gen, masuda=False, shiny_charm=False, encounter_rate=100,  attempt_time=15, hatch_time=None, verbose=False):
+    """Calculates and prints number of attempts (and expected time) required to find a shiny pokemon
 
     Parameters
     ----------
-    pokemon : str
-        name of pokemon_
-    game : str
-        initials of the name of the game
     gen : int
         integer denoting generation of pokemon
+    masuda : bool, optional
+        is the player using masuda method
+    shiny_charm : bool, optional
+        does the player have a shiny charm
+    encounter_rate : int or float
+        rate of encounter of the pokemon (only for wild encounters)
     attempt_time : int, optional
-        integer denoting time (in seconds) spent on a single catch attempt
+        time (in seconds) representing average time taken to encounter a pokemon, or soft reset
+    hatch_time : int, optional
+        time (in seconds) to hatch a single pokemon egg
+    verbose : bool, optional
+        Controls format of returned probability. Default (True) prints results as statements, False returns a dict.
 
     Returns
     -------
-    time : int
-        average time taken to encounter a single shiny
-    location : str
-        best location to encounter shiny
-    method : str
-        best method to catch shiny
-    attempt : int
-        average number of attempt before encounter
+    dict
+        dictionary containing probabilities as keys and number of attempts/hrs as the values
+    
+    Examples
+    --------
+    >>> shiny_hunt(gen=7, encounter_rate=25, attempt_time=15, shiny_charm=True, verbose=True)
+    25% chance to get an encounter in 3144 encounters
+    This would take an approximate of 13.1 hours.
+    -------------------------------
+    50% chance to get an encounter in 7568 encounters
+    This would take an approximate of 31.53 hours.
+    -------------------------------
+    75% chance to get an encounter in 15136 encounters
+    This would take an approximate of 63.07 hours.
+    -------------------------------
+    90% chance to get an encounter in 25144 encounters
+    This would take an approximate of 104.77 hours.
+    -------------------------------
+    99% chance to get an encounter in 50280 encounters
+    This would take an approximate of 209.5 hours.
+    -------------------------------
+
+    output when verbose is set to true
+
+    >>> shiny_hunt(gen=7, encounter_rate=35, attempt_time=15, shiny_charm=True, verbose=False)
+    {'25%': (1965, 8.19), '50%': (4730, 19.71), '75%': (9460, 39.42), '90%': (15715, 65.48), '99%': (31425, 130.94)}
+
+    output when verbose is set to false
+
     """
+    
+    # make sure all inputs are legal
+    if not isinstance(gen, int):
+        raise TypeError("Gen must be an integer")
+    if gen < 1 or gen > 9:
+        raise ValueError("Gen must be in the range [1-9]")
+    if not isinstance(encounter_rate, float):
+        if not isinstance(encounter_rate, int):
+            raise TypeError("Encounter rate must be a number")
+    if encounter_rate <= 0 or encounter_rate > 100.0:
+        raise ValueError("Encounter rate must be in the range [0-100]")
+    if not isinstance(attempt_time, int):
+        raise TypeError("Attempt time must be an integer (in seconds)")
+    if attempt_time < 0:
+        raise ValueError("Attempt time must be positive")
+    if not isinstance(shiny_charm, bool):
+        raise TypeError("Shiny charm must be a boolean")
+    if shiny_charm and gen < 5:
+        raise Exception("Shiny charm did not exist prior to gen 5")
+    if masuda and gen < 4:
+        raise Exception("Masuda method did not exist prior to gen 4")
+    
+    # base rate of encountering a shiny pokemon before gen 6
+    base_rate = 1/8192
+    
+    # base rate doubles in gen 6 and above
+    if gen > 5:
+        base_rate *= 2    
+    
+    prob = base_rate
+    
+    # probability increases if player has shiny charm equipped
+    if shiny_charm:
+        prob += 2 * base_rate
+        
+    # probability increases further when using masuda method
+    if masuda:
+        prob += 4 * base_rate
+        if gen > 4:
+            prob += base_rate
+    
+    expected_values = [0.25, 0.5, 0.75, 0.9, 0.99]
+    results = {}
 
-    # dummmy output just for testing functions
-    print('shiny_hunt works!!')
+    for value in expected_values:
+        # calculate number of attempts
+        n = int(np.round(np.log(1 - value) / np.log(1 - prob), 0))
+        if masuda:
+            if hatch_time:
+                results[f'{int(value * 100)}%'] = (n, np.round(n * hatch_time / 3600, 2))
+            else:
+                results[f'{int(value * 100)}%'] = n
+        elif encounter_rate < 100:
+            avg_attempts = int(np.round(np.log(1 - 0.9) / np.log(1 - (encounter_rate / 100)), 0))
+            results[f'{int(value * 100)}%'] = (n * avg_attempts, np.round(n * avg_attempts * attempt_time / 3600, 2))
+        else:
+            results[f'{int(value * 100)}%'] = (n, np.round(n * attempt_time / 3600, 2))
 
+    # print the output to console if verbose is set to true
+    if verbose:
+        for key in results:
+            if masuda:
+                if hatch_time:
+                    print(f'There is a {key} chance to hatch a shiny in {results[key][0]} attempts')
+                    print(f'This would take an approximate of {results[key][1]} hours.')
+                else:
+                    print(f'There is a {key} chance to hatch a shiny in {results[key]} attempts')
+            else:
+                print(f'There is a {key} chance to get a shiny encounter in {results[key][0]} encounters')
+                print(f'This would take an approximate of {results[key][1]} hours.')
+            print('================================')
+
+    # return dictionary otherwise
+    else:
+        return results
+    
 def boss_completion(probs, run_time=0):
     """Calculates expected wins/finishes required to obtain/complete a specific task
 
