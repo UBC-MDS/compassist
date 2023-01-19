@@ -24,33 +24,33 @@ def shiny_hunt(gen, masuda=False, shiny_charm=False, encounter_rate=100,  attemp
     Returns
     -------
     dict
-        dictionary containing probabilities as keys and number of attempts/hrs as the values
+        dictionary containing probabilities as keys and number of attempts/hrs values as tuples
     
     Examples
     --------
     >>> shiny_hunt(gen=7, encounter_rate=25, attempt_time=15, shiny_charm=True, verbose=True)
-    25% chance to get an encounter in 3144 encounters
+    There is a 25% chance to get a shiny encounter in 3144 encounters
     This would take an approximate of 13.1 hours.
-    -------------------------------
-    50% chance to get an encounter in 7568 encounters
+    ================================
+    There is a 50% chance to get a shiny encounter in 7568 encounters
     This would take an approximate of 31.53 hours.
-    -------------------------------
-    75% chance to get an encounter in 15136 encounters
+    ================================
+    There is a 75% chance to get a shiny encounter in 15136 encounters
     This would take an approximate of 63.07 hours.
-    -------------------------------
-    90% chance to get an encounter in 25144 encounters
+    ================================
+    There is a 90% chance to get a shiny encounter in 25144 encounters
     This would take an approximate of 104.77 hours.
-    -------------------------------
-    99% chance to get an encounter in 50280 encounters
+    ================================
+    There is a 99% chance to get a shiny encounter in 50280 encounters
     This would take an approximate of 209.5 hours.
-    -------------------------------
+    ================================
 
-    output when verbose is set to true
+    output of shiny_hunt() when verbose is set to true
 
     >>> shiny_hunt(gen=7, encounter_rate=35, attempt_time=15, shiny_charm=True, verbose=False)
     {'25%': (1965, 8.19), '50%': (4730, 19.71), '75%': (9460, 39.42), '90%': (15715, 65.48), '99%': (31425, 130.94)}
 
-    output when verbose is set to false
+    output of shin_hunt() when verbose is set to false
 
     """
     
