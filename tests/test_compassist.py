@@ -150,3 +150,27 @@ def test_boss_completion():
         )
         == None
     )
+
+# pts_cal unit tests
+def test_pts_calc_value_wild():
+    """Test is pts_calc outputs correct values for time required to achieve target"""
+    points_attempt = [100,20,120,150,200,30]
+    time_attempt = [2,3,2,5,6,2]
+    target_points = 200.0
+    expected_result = [3.3333333333333335, 4.0, 6.0, 6.666666666666667, 13.333333333333334, 30.0]
+    assert (
+        pts_calc(
+            points_attempt=points_attempt,
+            time_attempt=time_attempt,
+            target_points=target_points,
+            verbose=False,
+        )
+        == expected_result
+    ), "Incorrect output list"
+
+
+
+def test_pts_calc_type():
+    """Test pts_calc outputs correct data types"""
+    test_time_req = pts_calc([100,20,120,150,200,30], [2,3,2,5,6,2], 200.0, verbose=False)
+    assert type(test_time_req) == list, "output is not a list"
