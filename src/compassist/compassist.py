@@ -384,23 +384,88 @@ def dry_calc(p, n, verbose=True, plot=True):
         return p1
 
 
-def pts_calc(points_attempt, time_attempt):
-    """Calculates the time required to achieve certain number of points in the most efficient manner
+def pts_calc(points_attempt, time_attempt, target_points, verbose=True):
+    """Calculates and returns the list of time required (in ranked order) to achieve target points using the different options provided in input 
 
     Parameters
     ----------
-    points_attempt : float or array of float
-        number of points obtained per successful attempt
-    time_attempt : int
-        time (in seconds) per attempt on average
+    points_attempt : list of float or int
+        number of points obtained in each attempt
+    time_attempt : list of float or int
+        time taken (in minutes) for each attempt
+    target_point :  float or int
+        number of points targetted to reach
+    verbose : bool, optional
+        Controls format of returned time taken. Default (True) prints results as statements, False returns a list.
 
     Returns
     -------
-    time : int or array of int
-        time required for completion (in ranked ascending order for arrays)
-    attempts : int
-        number of attempts required (in ranked order of time)
-    """
+    time : list of float
+        time required (in ranked order of minutes) to achieve target points using the different options provided in input 
 
-    # dummy output just for testing functions
-    print("pts_calc works!!")
+    Examples
+    --------
+    output of pts_calc() when verbose is set to True default
+    >>> pts_calc([100,20,120,150,200,30], [2,3,2,5,6,2], 200.0)
+    Rank 1 using the strategy 120 points per 2 minutes you can reach your target in 3.3333333333333335 minutes
+    Rank 2 using the strategy 100 points per 2 minutes you can reach your target in 4.0 minutes
+    Rank 3 using the strategy 200 points per 6 minutes you can reach your target in 6.0 minutes
+    Rank 4 using the strategy 150 points per 5 minutes you can reach your target in 6.666666666666667 minutes
+    Rank 5 using the strategy 30 points per 2 minutes you can reach your target in 13.333333333333334 minutes
+    Rank 6 using the strategy 20 points per 3 minutes you can reach your target in 30.0 minutes
+    
+    output of pts_calc() when verbose is set to False
+    >>> pts_calc([100,20,120,150,200,30], [2,3,2,5,6,2], 200.0,  verbose=False)
+    pts_calc([100,20,120,150,200,30], [2,3,2,5,6,2], 200.0,  verbose=False)
+    
+    """
+    
+    
+    # checking data types and value 
+    if not isinstance(target_points, (int, float)):
+        raise TypeError("target points must be of type float or int")
+    if not isinstance(points_attempt, list):
+        raise TypeError("points_attempt must be of type list of float or int")
+    if not isinstance(time_attempt, list):
+        raise TypeError("time_attempt must be of type list of float or int")
+    if len(points_attempt) != len(time_attempt):
+        raise TypeError("The length of points attempt and time taken do not match")
+    for x in points_attempt:
+        if x < 1:
+            raise TypeError("points achieved cannot be negative or zero")
+    for x in time_attempt:
+        if x < 1:
+            raise TypeError("time taken cannot be negative or zero")
+            
+            
+    
+    scoring_rate = []
+    # calculating the scoring rate as per the different options from input    
+    for i in range(0, len(points_attempt)):
+        scoring_rate.append(float(points_attempt[i]/time_attempt[i]))
+    
+    time_required = []
+    # calculating the time required to reach the threshold points using the scoring rate
+    for x in range(0, len(scoring_rate)):
+        time_required.append(float(target_points/ scoring_rate[x]))
+        
+        
+        
+    # sorting the best time and strategy based on options available and target
+    indices_of_best_strat = np.argsort(time_required)
+    
+    
+    ranking = 1
+    sorted_time_required = []
+    
+    # print the output to console if verbose is set to true
+    if verbose:
+        for x in indices_of_best_strat:
+            print(
+                f"Rank {ranking} using the strategy {points_attempt[x]} points per {time_attempt[x]} minutes you can reach your target in {time_required[x]} minutes"
+            )
+            ranking += 1
+    else:
+        for x in indices_of_best_strat:
+            sorted_time_required.append(time_required[x])
+        return sorted_time_required
