@@ -130,7 +130,7 @@ def dry_calc(p, n, verbose=True, plot=True):
     
     # check verbose argument to return correct output
     if verbose:
-        result = f"There is a {p1_percent:.1f}% chance of the event occurring at least once after you play 5 attempts."
+        result = f"There is a {p1_percent:.1f}% chance of the event occurring at least once after you play {n} attempts."
         return result
     
     else:
