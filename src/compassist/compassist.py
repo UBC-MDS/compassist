@@ -59,28 +59,27 @@ def dry_calc(p, n, verbose=True, plot=True):
     Parameters
     ----------
     p : float
-        Probability of event occurence.
+        Probability of event occurence; a decimal between 0 and 1.
         
     n : int
-        The number of attempts.
+        The number of attempts; a whole number greater than or equal to 0.
         
     verbose : bool, Optional
-        Controls format of returned probability. Default (True) returns result as a statement, False returns a float.
+        Controls format of returned probability;
+        Default (True) returns result printed in a statement; 
+        False returns numerical probability as a float.
         
     plot : bool, Optional
-        Controls return of plot showing where the resulting probability lies on the binomial distribution. Default is True.
+        Controls printing of plot showing where the resulting probability lies on the binomial distribution; 
+        Default is True.
     
     Returns
     -------
     str 
-        String containing the probability of at least one occurrence of event given the number of trials as a percentage (default).
+        String statement containing the probability of at least one occurrence of event given the number of trials as a percentage (default).
 
     float
         Probability of at least one occurrence of event given the number of trials as a decimal (if verbose set to False).
-        
-        
-    matplotlib.container.BarContainer
-        Bar plot showing where the resulting probability lies on the probability distribution.
         
     Examples
     --------
