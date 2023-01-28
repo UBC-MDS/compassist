@@ -1,3 +1,4 @@
+![example workflow](https://github.com/UBC-MDS/compassist/actions/workflows/ci-cd.yml/badge.svg)
 # `compassist`
 
 ## Completionist Assistant
