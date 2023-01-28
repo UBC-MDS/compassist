@@ -5,6 +5,9 @@ description = "A set of tools to help commpute task time/ probabilies for video 
 authors = ["Samson Bakos, Waiel Tinwala, Marian Agyby and Ashwin Babu"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/UBC-MDS/compassist"
+repository = "https://github.com/UBC-MDS/compassist"
+documentation = 'https://compassist.readthedocs.io'
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.12"
@@ -22,7 +25,8 @@ sphinx-autoapi = "^2.0.1"
 sphinx-rtd-theme = "^1.1.1"
 
 [tool.semantic_release]
-version_variable = "pyproject.toml:version" # version location
+version_variable = "compassist/__init__.py:__version__" # version location
+version_source = "commit"
 branch = "main"                             # branch to make releases of
 changelog_file = "CHANGELOG.md"             # changelog file
 build_command = "poetry build"              # build dists
