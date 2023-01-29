@@ -31,7 +31,39 @@ $ pip install compassist
 
 ## Usage
 
--   TODO
+First import these modules:
+
+```python
+from compassist.compassist import *
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+import itertools
+```
+
+Example of how to use `shiny_hunt`:
+
+```python
+shiny_hunt(gen=7, encounter_rate=25, attempt_time=15, shiny_charm=True, verbose=True)
+```
+
+Example of how to use `boss_completion`:
+
+```python
+boss_completion(rates=[7/24, 7/24, 3/24, 2/24, 2/24, 2/24, 1/24], base_rate=1/20, attempts=673, verbose=True)
+```
+
+Example of how to use `dry_calc`:
+
+```python
+dry_calc(0.2, 5, verbose=True, plot=False)
+```
+
+Example of how to use `pts_calc`:
+
+```python
+pts_calc([100,20,120,150,200,30], [2,3,2,5,6,2], 200.0, verbose=True)
+```
 
 ## Contributing
 
