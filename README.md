@@ -1,4 +1,4 @@
-![example workflow](https://github.com/UBC-MDS/compassist/actions/workflows/ci-cd.yml/badge.svg)
+![ci-cd workflow](https://github.com/UBC-MDS/compassist/actions/workflows/ci-cd.yml/badge.svg)
 # `compassist`
 
 ## Completionist Assistant
@@ -11,7 +11,7 @@ A set of tools to help compute task time/ probabilities for video game completio
 
 This package provides tools to help completionist players focus and analyze their goals. These tools compute and visualize expected attempts, play times, and probabilities to help players understand their goals and compare the efficiency of different methods. Current tools are developed with a focus on goals in the games Oldschool Runescape and Pokemon, but the use cases are easily generalized to other applications.
 
-The following functions are currently available:
+The following functions are currently available: 
 
 -   `shiny_hunt()`: Designed for hunting Shiny Pokemon. Computes the time to find a specific Shiny Pokemon based on the occurrence rate of that Pokemon in a specific region, and Pokemon generation/game.
 
