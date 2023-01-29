@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "compassist"
-version = "0.0.0"
+version = "0.1.0"
 description = "A set of tools to help commpute task time/ probabilies for video game completionist tasks"
 authors = ["Samson Bakos, Waiel Tinwala, Marian Agyby and Ashwin Babu"]
 license = "MIT"
