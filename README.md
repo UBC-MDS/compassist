@@ -1,4 +1,4 @@
-![ci-cd workflow](https://github.com/UBC-MDS/compassist/actions/workflows/ci-cd.yml/badge.svg)
+![ci-cd workflow](https://github.com/UBC-MDS/compassist/actions/workflows/ci-cd.yml/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/compassist/branch/main/graph/badge.svg?token=eLd3BkStD3)](https://codecov.io/gh/UBC-MDS/compassist)
 # `compassist`
 
 ## Completionist Assistant
