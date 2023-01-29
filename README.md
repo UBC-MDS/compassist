@@ -26,7 +26,7 @@ There are some tools that perform similar functions to functions in `compassist`
 ## Installation
 
 ``` bash
-$ pip install compassist 
+$ pip install compassist  
 ```
 
 ## Usage
